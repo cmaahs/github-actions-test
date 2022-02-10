@@ -22,10 +22,10 @@ jobs:
           echo "In Main: ${PASSED_IN}"
       -
         name: Action-Envs
-          uses: ./.github/actions/call-me
-          with:
-            actor: ${{ github.actor }}
-            token: ${{ secrets.GITHUB_TOKEN }}
+        uses: ./.github/actions/call-me
+        with:
+          actor: ${{ github.actor }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
 
 
