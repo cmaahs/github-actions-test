@@ -19,7 +19,7 @@ jobs:
       -
         name: My-Envs
         run: |
-          echo "${PASSED_IN}"
+          echo "In Main: ${PASSED_IN}"
       -
         name: Action-Envs
           uses: ./.github/actions/call-me
