@@ -1,5 +1,5 @@
-name: Call-Me
-description: Call me, anytime
+name: call-me
+description: "Call me, anytime"
 
 inputs:
   actor:
