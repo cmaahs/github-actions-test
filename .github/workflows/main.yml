@@ -1,0 +1,31 @@
+name: Main-Job
+
+env:
+  PASSED_IN: this
+
+on:
+  push:
+    - main
+
+jobs:
+  start:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      -
+        name: My-Envs
+        run: |
+          echo "${PASSED_IN}"
+      -
+        name: Action-Envs
+          uses: ./.github/actions/call-me
+          with:
+            actor: ${{ github.actor }}
+            token: ${{ secrets.GITHUB_TOKEN }}
+
+
+

@@ -1,0 +1,17 @@
+name: Call-Me
+description: Call me, anytime
+
+inputs:
+  actor:
+    required: true
+  token: 
+    required: true
+
+runs:
+  using: composite
+  steps:
+    -
+      name: What-Envs
+      shell: bash
+      run: |
+        echo "Passed in: ${PASSED_IN}"
