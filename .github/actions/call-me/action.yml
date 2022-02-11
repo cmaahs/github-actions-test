@@ -16,10 +16,11 @@ runs:
       run: |
         echo "Passed in: ${PASSED_IN}"
         export NEW_VAR="this+${PASSED_IN}"
+        echo "NEW_VAR=${NEW_VAR}" >> ${GITHUB_ENV}
     - 
       name: New-Envs
       shell: bash
       run: |
         echo "Passed in ${PASSED_IN}"
-        echo "${NEW_VAR}"
+        echo "New File: ${NEW_VAR}"
         
