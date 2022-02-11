@@ -15,3 +15,11 @@ runs:
       shell: bash
       run: |
         echo "Passed in: ${PASSED_IN}"
+        export NEW_VAR="this+${PASSED_IN}"
+    - 
+      name: New-Envs
+      shell: bash
+      run: |
+        echo "Passed in ${PASSED_IN}"
+        echo "${NEW_VAR}"
+        
