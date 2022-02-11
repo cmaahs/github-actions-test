@@ -2,6 +2,7 @@ name: Main-Job
 
 env:
   PASSED_IN: this
+  NEW_VAR: ""
 
 on:
   push:
