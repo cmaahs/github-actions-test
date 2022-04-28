@@ -45,4 +45,4 @@ jobs:
           context: ./toolnotes/
           platforms: linux/amd64
           push: true
-          tags: cmaahs/toolnotes:${{ env.IMAGE_TAG }}
+          tags: ${{ env.REGISTRY }}/cmaahs/toolnotes:${{ env.IMAGE_TAG }}
