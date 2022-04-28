@@ -32,6 +32,7 @@ jobs:
       -
         name: Set Image Tag and Verify Version
         run: |
+          IMAGE_TAG=$(cat toolnotes/VERSION.txt)
           echo IMAGE_TAG=$(cat toolnotes/VERSION.txt) >> ${GITHUB_ENV}
           SEMVER_MATCH=$(echo ${IMAGE_TAG} | sed 's/\./\\\./g')
           if grep -q "^## \[${SEMVER_MATCH}\]" CHANGELOG.md; then
