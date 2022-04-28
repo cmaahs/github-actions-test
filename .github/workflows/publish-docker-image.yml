@@ -35,7 +35,7 @@ jobs:
           IMAGE_TAG=$(cat toolnotes/VERSION.txt)
           echo IMAGE_TAG=$(cat toolnotes/VERSION.txt) >> ${GITHUB_ENV}
           SEMVER_MATCH=$(echo ${IMAGE_TAG} | sed 's/\./\\\./g')
-          if grep -q "^## \[${SEMVER_MATCH}\]" CHANGELOG.md; then
+          if grep -q "^## \[${SEMVER_MATCH}\]" toolnotes/CHANGELOG.md; then
             echo "VERSION has a matching CHANGELOG.md entry"
           else
             echo "The VERSION (${IMAGE_TAG}) does not have a matching CHANGELOG.md entry"
