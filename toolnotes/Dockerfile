@@ -4,7 +4,7 @@ ARG USER=cmaahs
 ENV HOME /home/$USER
 
 RUN apt-get update \
-    && apt-get install -y bash jq
+    && apt-get install -y bash jq net-tools
 
 # add new user
 RUN adduser --disabled-password --gecos "" $USER

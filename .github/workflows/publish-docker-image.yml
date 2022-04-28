@@ -32,6 +32,14 @@ jobs:
       -
         name: Set Image Tag
         run: echo IMAGE_TAG=$(cat toolnotes/VERSION.txt) >> ${GITHUB_ENV}
+      -
+        name: Is this a new VERSION
+        run: |
+          TAG_EXISTS=$(curl -Ls -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://ghcr.io/v2/cmaahs/toolnotes/tags/list | jq -r '.tags[] | select(.=="${{ env.IMAGE_TAG }}")')
+          if [[ -z $TAG_EXISTS ]]; then
+            echo "This version already exists, please update VERSION.txt and CHANGELOG.md"
+            exit 1
+          fi
       # -
       #   name: Extract metadata (tags, labels) for Docker
       #   id: meta
