@@ -36,7 +36,7 @@ jobs:
           echo IMAGE_TAG=$(cat toolnotes/VERSION.txt) >> ${GITHUB_ENV}
           SEMVER_MATCH=$(echo ${IMAGE_TAG} | sed 's/\./\\\./g')
           if grep -q "^## \[${SEMVER_MATCH}\]" toolnotes/CHANGELOG.md; then
-            echo "VERSION has a matching CHANGELOG.md entry"
+            echo "VERSION (${IMAGE_TAG}) has a matching CHANGELOG.md entry"
           else
             echo "The VERSION (${IMAGE_TAG}) does not have a matching CHANGELOG.md entry"
             exit 1
@@ -45,7 +45,6 @@ jobs:
         name: Check if TAG is Available
         run: |
           PULL_TOKEN=$(curl -Ls -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://ghcr.io/token\?scope\="repository:cmaahs/toolnotes:pull" | jq -r '.token')
-          echo $PULL_TOKEN
           TAG_EXISTS=$(curl -Ls -H "Authorization: Bearer ${PULL_TOKEN}" https://ghcr.io/v2/cmaahs/toolnotes/tags/list | jq -r '.tags[] | select(.=="${{ env.IMAGE_TAG }}")')
           if [[ -n ${TAG_EXISTS} ]]; then
             echo "This version already exists, please update VERSION.txt and CHANGELOG.md"
